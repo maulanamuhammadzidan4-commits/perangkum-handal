@@ -10,7 +10,7 @@ stemmer = stemmer_factory.create_stemmer()
 
 # stopword remover init
 stopword_remover_factory = StopWordRemoverFactory()
-stopword_remover = stopword_remover_factory.create_stopword_remover()
+stopword_remover = stopword_remover_factory.create_stop_word_remover()
 
 
 def clean_text(text):
@@ -37,3 +37,30 @@ def preprocess_text(text):
     text = stemming(text)
 
     return text
+
+def sentences_segmentation(text):
+    """ Pisahkan teks menjadi kalimat """
+    sentences = re.split(f"(?<=[.!?])\s+", text.strip())
+
+    return sentences
+
+def prepare_sentences(text):
+    """ Preprocess setiap kalimat """
+    original_sentences = sentences_segmentation(text)
+    processed_sentences = [preprocess_text(sentences) for sentences in original_sentences]
+
+    return original_sentences, processed_sentences
+
+if __name__ == '__main__':
+    materi = """
+    Python adalah bahasa pemrograman.
+    Python banyak digunakan untuk membuat aplikasi.
+    Bahasa Python relatif mudah dipelajari.
+    """
+
+    original, processed = prepare_sentences(materi)
+
+    for i in range(len(original)):
+        print(f"Original : {original[i]}")
+        print(f"Processed: {processed[i]}")
+        print()
