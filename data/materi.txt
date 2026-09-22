@@ -1,0 +1,44 @@
+===================================================================
+KONSEP DASAR ENVIRONMENT DEPLOYMENT: LOCAL, STAGING, DAN PRODUCTION
+
+PENGERTIAN UMUM
+Local, Staging, dan Production (Prod) adalah tingkatan lingkungan (environments)
+kerja dalam alur pengembangan perangkat lunak (software development pipeline).
+Pemisahan ini bertujuan untuk meminimalkan risiko kerusakan data, mempermudah
+pengujian kode, dan memastikan aplikasi yang diakses oleh pengguna selalu stabil.
+
+TIGA TAHAP UTAMA DEPLOYMENT PIPELINE
+
+A. LOCAL (DEVELOPMENT ENVIRONMENT)
+- Definisi: Lingkungan kerja di komputer lokal milik masing-masing pengembang.
+- Fungsi: Tempat pertama kali kode ditulis, diubah, dan diuji secara mandiri.
+- Karakteristik:
+* Biasanya berjalan di IP lokal atau localhost (contoh: localhost:3000).
+* Menggunakan data dummy/tiruan untuk pengujian.
+* Aman untuk melakukan uji coba fitur baru tanpa takut merusak sistem utama.
+
+B. STAGING (PRE-PRODUCTION ENVIRONMENT)
+- Definisi: Server khusus yang konfigurasinya dibuat sedemikian rupa agar
+mirip (simulasi) 99% dengan server Production.
+- Fungsi: Tempat pengujian menyeluruh sebelum aplikasi dirilis ke publik.
+- Karakteristik:
+* Digunakan oleh tim Quality Assurance (QA) dan Stakeholder.
+* Menampung pengujian integrasi, performa, dan pengujian beban kerja (load test).
+* Membantu menemukan bug akibat perbedaan arsitektur/sistem operasi server.
+
+C. PRODUCTION / PROD (LIVE ENVIRONMENT)
+- Definisi: Server utama yang langsung diakses oleh pengguna akhir (end-user).
+- Fungsi: Menjalankan versi perangkat lunak versi resmi dan paling stabil.
+- Karakteristik:
+* Memiliki tingkat keamanan, kestabilan, dan performa yang sangat tinggi.
+* Menggunakan data asli (live data).
+* Setiap perubahan di server ini harus melalui proses verifikasi yang ketat.
+
+MANFAAT UTAMA PEMISAHAN ENVIRONMENT
+
+Isolasi Risiko: Kesalahan pada kode baru tidak langsung berdampak pada pengguna asli.
+
+Kemudahan Troubleshooting: Masalah konfigurasi server dapat dideteksi di Staging.
+
+Efisiensi Kolaborasi: Pengembang dapat bekerja paralel di Local tanpa saling mengganggu.
+===================================================================
